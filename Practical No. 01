@@ -1,0 +1,42 @@
+Practical No. 01:- 
+
+Installing DHCP in Ubuntu 16
+
+A.Install DHCP 
+
+Command :-  sudo apt-get install isc-dhcp-server
+
+B. Configuring the network card.
+    Command :- sudo nano /etc/default/isc-dhcp-server
+    Set Interfaces=”eth0”
+
+C. Configuring DHCP 
+      Command :- sudo nano /etc/dhcp/dhcpd.conf
+      
+   add the following lines if not there:- 
+    default-lease-time 3600;
+    max-lease-time 7200;
+    subnet 192.168.0.1 netmask 255.255.255.0 {
+    range 192.168.0.10 192.168.0.40;
+    option routers 192.168.0.1;
+    }
+
+ 
+D. Start and stop the isc-dchp-server service
+
+The commands to start and stop this service are:
+
+Start service
+Command :- sudo systemctl start isc-dhcp-server
+
+Stop service
+Command :- sudo systemctl stop isc-dhcp-server
+
+Restart service
+Command :- sudo systemctl restart isc-dhcp-server
+
+
+
+
+
+
