@@ -1,18 +1,22 @@
 Initital settings: 
 
 Add a user Command follows:-
-1. Add a new user using :- #useradd -m username
-2.Create a password for the user:- #passwd username
+1. Add a new user using :- $useradd username
+2.Create a password for the user:- $passwd username
 3. terminal ask you for type password two time. After that it creates new user.
 4.Password updated successfully.
 
 Network Setting :- 
-
-Configure Services:-
+1.iP Address :- sudo ifconfig -a or  ifconfig
 
 Display the list of services which are running:-  
-1.Command:- $sudo systemctl
+1.Command:- $sudo systemctl -t=service --state=running
 
 Stop and turn Off auto-start setting for a service if you don't need it:-
+1. To start service: sudo systemctl start <service_name>
+2. To stop service: sudo systemctl stop <service_name>
+3. To enable service: sudo systemctl enable <service_name>
+
 
 sudo setting:- 
+Command:- sudo apt install package-name
