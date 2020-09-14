@@ -1,0 +1,18 @@
+Initital settings: 
+
+Add a user Command follows:-
+1. Add a new user using :- #useradd -m username
+2.Create a password for the user:- #passwd username
+3. terminal ask you for type password two time. After that it creates new user.
+4.Password updated successfully.
+
+Network Setting :- 
+
+Configure Services:-
+
+Display the list of services which are running:-  
+1.Command:- $sudo systemctl
+
+Stop and turn Off auto-start setting for a service if you don't need it:-
+
+sudo setting:- 
