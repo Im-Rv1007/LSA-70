@@ -1,0 +1,28 @@
+SSH Server: Password Authentication configure SSH server to manage a server from remote computer, SSH client.
+
+Step 01 :- Check apt is up to date
+Command : sudo apt-get update
+
+Step 02 :- Install openssh-server
+Command : sudo apt-get install openssh-server
+
+Step 03 :- Start ssh server
+Command : sudo systemctl start ssh
+
+Step 04 :-  Enable SSH
+Command : sudo systemctl enable ssh
+
+step 05 :- check the status of ssh  
+Command :- sudo systemctl status ssh
+
+Step 06 :- Install firewall (ufw)
+Command : sudo ufw allow ssh
+
+Step 07 :- Enable firewall 
+Command : sudo ufw enable
+
+Step 08 :- Check the status of firewall
+Command : sudo ufw status
+
+Step 09 :- Test your connection
+Command : ssh username@ip   (eg. ssh kali@127.0.01)
