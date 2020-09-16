@@ -1,0 +1,71 @@
+Setting up a Network File System
+
+
+Configuring the Server Machine
+
+Step 01 :- Check apt is up to date
+Command : sudo apt-get update
+
+Step 02:- Installing NFS Server 
+Command : sudo apt-get -y install nfs-kernel-server
+
+Step 03:- Make a new directory to be shared over the network
+Command : mkdir /path/dir_name                  (eg. mkdir /Desktop/Rvfolder)
+
+Step 04 :- Give owner permission 
+Command : sudo chown nobody:nogroup dir_path    (eg. sudo chown nobody:nogroup /Desktop/Rvfolder/)
+
+Step 05 :- Give all permission
+Command : sudo chmod 777 dir_path               (eg. sudo chmod 777 /Desktop/Rvfolder/)
+
+Step 06 :- Create file or move or copy the file on given dir_path
+Command : cd dir_path                           (eg. cd /Desktop/Rvfolder/)
+
+(Now you can move or create the file in this directory)
+Command : echo "Hello world" > a.txt
+
+Step 07 :- Configure the exports config file
+Command :  sudo nano /etc/exports
+            Or
+Command : sudo vi /etc/exports
+
+Step 08 :- Append the following line, in case of a single client (here we use 127.0.0.1 as client IP)
+Command : dir_path clientIP(rw,sync,no_subtree_check)                     (eg. /Desktop/Rvfolder 127.0.0.1(rw, sync, no_subtree_check))
+
+Step 09 :- Time to export the file system onto the network
+Command : sudo exportfs -a
+
+Step 10 :- For the configurations to work, restart the service
+Command : sudo systemctl restart nfs-kernel-server
+
+Step 11 :- Configure ufw to accept requests to the shared folder
+Command : sudo ufw allow from clientIP to any port nfs
+  
+Step 12 :- Check the status 
+Command : sudo ufw status
+
+
+Configuring the Client Machine
+
+Step 12 :- Install NFS Common
+Command : sudo apt-get install nfs-common
+
+Step 13 :- Create a mount point for the NFS host’s shared folder
+Command : sudo mkdir clien_dir                    (eg. sudo mkdir /Desktop/KPfolder/)
+
+Step 14 :- Mount the shared directory on the client (here since we're testing it on the local machine we use serverIP as: 127.0.0.1)
+Command : sudo mount serverIP:/server_shared_folder client_shared_folder_path                       (eg.  sudo mount 127.0.0.1:/Desktop/Rvfolder /Desktop/KPfolder)
+
+Step 15 :- Now you see the file you upload or create on server side is also visible from client side
+Here :  file a.txt from Rvfolder you also see from KPfolder 
+
+
+OR
+
+
+Testing the connection:
+
+Step 16:- Add some file to the server side shared folder                     (eg. /Desktop/Rvfolder/)
+
+Step 17:- Change directory to the client directory path and see if the file is visible there
+Command : cd client_shared_dir_path                                          (eg. /Desktop/KPfolder/)
