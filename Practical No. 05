@@ -1,0 +1,43 @@
+Installing and configuring Samba server for file sharing.
+
+Step 01 :- Check apt is up to date
+Command : sudo apt-get update
+
+Step 02 :- Install samba now
+Command : sudo apt-get install samba
+
+Step 03 :- We create one directory which samba can share 
+Command : mkdir <path>/sambashare/                                (eg.  mkdir /home/kali/sambashare/)
+
+Step 04 :- Change the directory to where we create directory 
+Command : cd <path>/sambashare                                    (eg. cd /home/kali/sambashare)
+
+Step 05 :- Create one file 
+Command : echo "content" > [file_name]                            (eg. echo "Hello World" > a.txt)
+
+Step 06 :- Editing the config file to let samba know of the folder.
+Command : sudo nano /etc/samba/smb.conf
+
+Step 07 :- Insert the following code at end of file.
+Command :  [sambashare]
+                comment = Samba on Ubuntu
+                path = /home/kali/sambashare
+                read only = no
+                browsable = yes
+                
+Step 08 :- Restart the samba service
+Command : sudo service smbd restart
+
+Step 09 :- Allow samba through the firewall
+Command : sudo ufw allow samba
+
+Step 10 :- Setting up User Account
+Command : sudo smbpasswd -a kali
+
+Step 11 :- Open the file explorer and type 
+Command :- smb://<ip-address>/<shared_file>                        (eg. smb://127.0.0.1/sambashare)
+        
+          OR
+          
+Step 11 :- In Windows type 
+Command : \\ip-address\sambashare (in File Explorer)               (eg. \\127.0.0.0\sambashare)
