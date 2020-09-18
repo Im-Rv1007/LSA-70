@@ -36,8 +36,3 @@ Command : sudo smbpasswd -a kali
 
 Step 11 :- Open the file explorer and type 
 Command :- smb://<ip-address>/<shared_file>                        (eg. smb://127.0.0.1/sambashare)
-        
-          OR
-          
-Step 11 :- In Windows type 
-Command : \\ip-address\sambashare (in File Explorer)               (eg. \\127.0.0.0\sambashare)
