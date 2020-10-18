@@ -3,7 +3,7 @@
 ---
 
 > ### Steps:
-```
+---
 
 Step 01 : Install DHCP
 ```
