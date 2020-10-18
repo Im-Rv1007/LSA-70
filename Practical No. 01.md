@@ -1,8 +1,8 @@
-> # **Practical No.01**
-> #####  Aim: Installation & Setup of DHCP Server
+# **Practical No.01**
+#####  Aim: Installation & Setup of DHCP Server
 ---
 
-> ### Steps:
+## Steps:
 ---
 
 Step 01 : Install DHCP
