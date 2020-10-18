@@ -1,42 +1,65 @@
-Practical No. 01:- 
+> # **Practical No.01**
+> #####  Aim: Installation & Setup of DHCP Server
+---
 
-Installing DHCP in Ubuntu 16
+> ### Steps:
+```
 
-A.Install DHCP 
+Step 01 : Install DHCP
+```
+Command :- sudo apt-get install -y isc-dhcp-server
+```
 
-Command :-  sudo apt-get install isc-dhcp-server
+Step 02 : Setting up the IP
+```
+Command :- sudo ifconfig eth0 192.168.106.128 netmask 255.255.255.0
+```
 
-B. Configuring the network card.
-    Command :- sudo nano /etc/default/isc-dhcp-server
-    Set Interfaces=”eth0”
+Step 03 : Configuring DHCP
+```   
+Command :- sudo nano /etc/dhcp/dhcpd.conf
+```
 
-C. Configuring DHCP 
-      Command :- sudo nano /etc/dhcp/dhcpd.conf
-      
-   add the following lines if not there:- 
-    default-lease-time 3600;
-    max-lease-time 7200;
-    subnet 192.168.0.1 netmask 255.255.255.0 {
-    range 192.168.0.10 192.168.0.40;
-    option routers 192.168.0.1;
-    }
+Step 04 : Add the following Command at the end of conf file
+```
+Add :- 
+default-lease-time 600;
+max-lease-time 7200;
 
- 
-D. Start and stop the isc-dchp-server service
+subnet ip netmask broadcast {
+   range 192.168.1.150 192.168.1.200;
+   option routers 192.168.1.254;
+}
+```
 
-The commands to start and stop this service are:
+Step 05 : Now open interface file
+```
+Command :- sudo nano /etc/default/isc-dhcp-server
+```
 
-Start service
-Command :- sudo systemctl start isc-dhcp-server
+Step 06 : Edit the interfacev4 = "eth0"
+  ```
+Command :-  INTERFACESv4="eth0"
+  ```
+  
+Step 07 : Enable dhcp-server:
+  ```
+Command :-  sudo systemctl enable isc-dhcp-server.service
+  ```
 
-Stop service
-Command :- sudo systemctl stop isc-dhcp-server
+Step 08 : Check the Status of dhcp :
+  ```
+Command :-  sudo systemctl status isc-dhcp-server.service
+  ```
 
-Restart service
-Command :- sudo systemctl restart isc-dhcp-server
-
-
-
-
-
-
+Step 09 : To start,stop and restart the service, run the command:
+  ```
+Command :-  sudo systemctl start isc-dhcp-server.service
+Command :-  sudo systemctl stop isc-dhcp-server.service
+Command :-  sudo systemctl restart isc-dhcp-server.service
+  ```
+  
+Step 10 : Finally, to check whether configured properly type:
+```
+Command :- sudo dhcp -T eth0
+```
