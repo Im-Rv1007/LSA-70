@@ -1,2 +1,65 @@
-# LSA-70
-Linux System Administrator Practicals
+> # **Practical No.01**
+> #####  Aim: Installation & Setup of DHCP Server
+---
+
+> ### Steps:
+```
+
+Step 01 : Install DHCP
+```
+Command :- sudo apt-get install -y isc-dhcp-server
+```
+
+Step 02 : Setting up the IP
+```
+Command :- sudo ifconfig eth0 192.168.106.128 netmask 255.255.255.0
+```
+
+Step 03 : Configuring DHCP
+```   
+Command :- sudo nano /etc/dhcp/dhcpd.conf
+```
+
+Step 04 : Add the following Command at the end of conf file
+```
+Add :- 
+default-lease-time 600;
+max-lease-time 7200;
+
+subnet ip netmask broadcast {
+   range 192.168.1.150 192.168.1.200;
+   option routers 192.168.1.254;
+}
+```
+
+Step 05 : Now open interface file
+```
+Command :- sudo nano /etc/default/isc-dhcp-server
+```
+
+Step 06 : Edit the interfacev4 = "eth0"
+  ```
+Command :-  INTERFACESv4="eth0"
+  ```
+  
+Step 07 : Enable dhcp-server:
+  ```
+Command :-  sudo systemctl enable isc-dhcp-server.service
+  ```
+
+Step 08 : Check the Status of dhcp :
+  ```
+Command :-  sudo systemctl status isc-dhcp-server.service
+  ```
+
+Step 09 : To start,stop and restart the service, run the command:
+  ```
+Command :-  sudo systemctl start isc-dhcp-server.service
+Command :-  sudo systemctl stop isc-dhcp-server.service
+Command :-  sudo systemctl restart isc-dhcp-server.service
+  ```
+  
+Step 10 : Finally, to check whether configured properly type:
+```
+Command :- sudo dhcp -T eth0
+```
