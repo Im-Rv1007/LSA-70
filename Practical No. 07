@@ -1,0 +1,34 @@
+Aim: Install MySQL to configure database server.
+
+Step 01 :- Check apt is up to date
+Command : sudo apt-get update
+
+Step 02 :- Update apt
+Command : sudo apt update -y
+
+Step 03 :- Install wget (mysql)
+Command : sudo apt install -y wget
+
+Step 04 :- Use wget to get the debian package for MySQL
+Command : sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.15-1_all.deb
+
+Step 05 :- Install the package
+Command : sudo dpkg -i mysql-apt-config_0.8.15-1_all.deb
+
+Step 06 :- Update apt
+Command : sudo apt update
+
+Step 07 :- Installation of the mysql-commmunity-server
+Command : sudo apt install mysql-community-server
+
+Step 08 :- Enable MySQL 
+Command : sudo systemctl enable --now mysql
+
+Step 09 :- Check the status of mysql
+Command : sudo systemctl status mysql
+
+Step 10 :- Log in using root
+Command : sudo mysql -u root -p
+
+Step 11 :- Start MySQL.
+Command : sudo service mysqld start
