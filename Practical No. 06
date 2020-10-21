@@ -1,0 +1,42 @@
+Aim: Configure NTP, Install and Configure NTP Server, Configure NTP Client.
+
+
+Step 01 :- Check apt is up to date
+Command : sudo apt-get update
+
+Step 02 :- Install ntp
+Command : sudo apt install ntp
+
+Step 03 :- Install sntp
+Command : sudo apt install sntp
+
+Step 04 :- Check the version 
+Command :- sudo sntp --version
+
+Step 05 :- Change directory and list all ntp.conf 
+Command :  cd /etc
+           ls -lrth *ntp.conf*
+           
+Step 06 :- Start ntp 
+Command : sudo systemctl start ntp
+
+Step 07 :- Check ntp status
+Command : sudo systemctl status ntp
+
+Step 08 :- Configure ntp
+Command : sudo nano /etc/ntp.conf
+
+Step 09 :- Append the following line on file 
+Command : server localhost
+
+Step 10 :- Check the conf file
+Command : cat ntp.conf
+
+Step 11 :- Restart the ntp service
+Command : sudo systemctl restart ntp
+
+Step 12 :- Check status of the ntp service
+Command : sudo systemctl status ntp
+
+Step 13 :- Query NTP to check connection.
+Command : sudo ntpq -p
