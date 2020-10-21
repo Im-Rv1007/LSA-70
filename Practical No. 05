@@ -1,4 +1,5 @@
-Installing and configuring Samba server for file sharing.
+Aim: Install Samba to share folders or files between Windows and Linux.
+
 
 Step 01 :- Check apt is up to date
 Command : sudo apt-get update
