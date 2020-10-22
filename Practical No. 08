@@ -1,0 +1,64 @@
+Aim :- NIS - Directory Service Protocol
+
+Step 01 :- Update 
+Command : sudo apt-get update
+
+Step 02 :- Install NIS
+Command : sudo apt install nis
+
+Step 03 :- Open nis in nano
+Command : sudo nano /etc/default/nis
+
+Step 04 :- Edit NISserver and NIS-client
+Command : NISSERVER=master NISCLIENT=false
+
+Step 05 :- Copy nis to nis_client
+Command : sudo cp /etc/default/nis /etc/default/nis_client
+
+Step 06 :- Check Ip
+Command : ip a
+
+Step 07:- Open Ypserv
+Command : sudo nano /etc/ypserv.securenets
+
+Step 08 :- Append The following 
+Command :- 255.255.255.0    10.0.2.0
+
+Step 09 :- Add Host
+Command : sudo /usr/lib/yp/ypinit -m
+
+When complete adding host press Ctrl + D
+
+Step 10 :- Check the gmake
+Command : which gmake
+
+Step 11 :- If Gmake is not installed the install
+Command : sudo apt-get install make
+
+Step 12 :- Restart rpcbind 
+Command : sudo systemctl restart rpcbind nis 
+
+Step 13 :- Check Status of rpcbind
+Command : sudo systemctl status rpcbind
+
+Step 14 : Start ypserve and Check Status
+Command : sudo systemctl start ypserve
+Command : sudo systemctl status ypserve
+
+Step 15 :- Open Hosts
+Command : sudo nano /etc/hosts
+
+Step 16 :- Append Hosts
+Command : ipaddress    server-name
+
+Step 17 :- Open yp.conf
+Command : sudo nano /etc/yp.conf
+
+Step 18 :- Add Domain and server 
+Command : Domain domain-name server server-host-name
+
+Step 19 :- Open nsswitch.conf
+Command : sudo nano /etc/nsswitch.conf
+
+Step 20 :- Check Connection is working or not
+Command : ping server-name
